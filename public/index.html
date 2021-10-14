@@ -1,0 +1,73 @@
+<html>
+	<head>  
+		<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>  
+		<script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+		<script src="https://github.com/WalletConnect/walletconnect-monorepo/releases/download/1.6.2/web3-provider.min.js"></script>
+		<script src="js/index.js"></script>
+
+	</head>
+	<body>
+		<h1>Moralis</h1>
+		<h2>Authentication</h2>
+		<hr />
+		<button onclick="login()">Connect</button>
+		<button onclick="logout()">Logout</button>
+		<button onclick="authenticate()">Authenticate</button>
+		<button onclick="walletconnect()">WalletConnect</button>
+		<button onclick="walletconnect(56)">WalletConnect with ChainId</button>
+		<button onclick="queryTransaction()">Query Transaction</button>
+		<button onclick="getAccountTransaction()">Get Account Transaction</button>
+
+		<p>Login status:<span id="login-status">No Login</span></p>
+		<p>Address:<span id="eth-address"></span></p>
+		<p>ID:<span id="morails-id"></span></p>
+		<p>Balance:<span id="balance"></span></p>
+		<hr />
+
+
+		<h1>Upload Image</h1>	
+		<input type="file" id="image-file" />
+		<button onclick="uploadFile()">Upload</button>		
+
+		<h1>Sending ETH, Tokens and NFTs</h1>
+
+		<h2>Native</h2>
+		<div>
+			<button onclick="sendETH()">Send ETH</button>
+			<h4>Results</h4>
+			<p id="send-eth-results"></p>
+		</div>
+		
+		<h2>ERC721</h2>
+		<div >
+			<button onclick="sendERC721()">Send ETH</button>
+			<h4>Results</h4>
+			<p id="send-eth-results2"></p>
+		</div>	
+
+		<h2>ERC20</h2>
+		<div>
+			<button onclick="sendERC20()">Send ETH</button>
+			<h4>Results</h4>
+			<p id="send-eth-results3"></p>
+		</div>
+		
+		<hr />
+		<h1>Web3 API</h1>
+		<h2>Native</h2>
+		<div class="web3-api-native">
+			<button onclick="getBlock()">GetBlock</button>
+		</div>
+
+		<h2>NFTs</h2>
+		<div class="web3-api-native">
+			<h3>GET NFT</h3>
+			<button onclick="getNFTs()">Get NFT</button>
+			<h3>Upload NFT</h3>
+			<input type="file" id="image-nft-file" />
+			<button onclick="uploadNFT()">Upload NFT</button>
+		</div>
+
+	</body>
+</html>
