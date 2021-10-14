@@ -1,10 +1,5 @@
-const appId = 'ncqPmxNwI2wAEwbDs1yNyG7YoYEa7oPdENF1TYQ6';
-const serverUrl = 'https://pmyuu0yogy5c.moralishost.com:2053/server';
 Moralis.initialize(appId);
 Moralis.serverURL = serverUrl;
-
-const account1Address = "0x51d26c439bff580340729d4c949cc1d679c8b47c";
-const account2Address = "0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1";
 
 Moralis.start({serverUrl,appId});
 
@@ -16,10 +11,8 @@ const ui = {
         $('#morails-id').html(user.id);
         
         const result = await web3.eth.getBalance(user.get('ethAddress'));
-        console.log(await web3.eth.getBalance("0xd4a3BebD824189481FC45363602b83C9c7e9cbDf"));
         $('#balance').html(web3.utils.fromWei(result));
-
-        const result2 = await Moralis.Web3API.account.getNativeBalance({chain:"bsc", address:ethAddress});
+        const result2 = await Moralis.Web3API.account.getNativeBalance({chain:"polygo", address:ethAddress});
         console.log(web3.utils.fromWei(result2.balance));
         
     }
@@ -28,16 +21,16 @@ const ui = {
 getReceiverAddress = async() => {
     try{
         const user = await Moralis.User.current();
-        if(user[0] == "0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1"){
-            return "0x51D26c439bFf580340729D4C949Cc1d679C8B47c";
+        if(user[0] == account1Address){
+            return account2Address;
         }else{
-            return "0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1";
+            return account1Address;
         }
 
     }catch(error){
         const code = error.code;
         const message = error.message;
-        return "0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1";
+        return account1Address;
     }
 }
 
@@ -114,7 +107,7 @@ getAccountTransaction = async() => {
         const user = Moralis.User.current();
         const address = user.get("ethAddress");
 
-        const options = { chain: "bsc", address: "0xd4a3BebD824189481FC45363602b83C9c7e9cbDf", order: "desc", from_block: "0" };
+        const options = { chain: "bsc", address: account1Address, order: "desc", from_block: "0" };
         const transactions2 = await Moralis.Web3API.account.getTransactions(options);
 
         console.log("Transaction2", transactions2);

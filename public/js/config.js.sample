@@ -1,0 +1,7 @@
+// Moralis parameters
+const appId = 'YOUR APPID';
+const serverUrl = 'YOUR MORALIS SERVER URL';
+
+// account for testing transferring
+const account1Address = "ADDRESS 1";
+const account2Address = "ADDRESS 2";
